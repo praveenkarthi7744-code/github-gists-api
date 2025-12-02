@@ -1,0 +1,11 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - run: docker build . -t praveenchinna47/testrepo:${{github.run_number}}
+      - run: docker push praveenchinna47/testrepo:${{github.run_number}}
